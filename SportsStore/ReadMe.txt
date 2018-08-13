@@ -1,0 +1,1 @@
+﻿Hello, this is just an exercise from book:  Pro ASP.NET 4.5 in VB
