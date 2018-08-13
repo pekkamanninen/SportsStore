@@ -1,0 +1,24 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Store.master.vb" Inherits="SportsStore.Store" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>SportsStore</title>
+    <link rel="stylesheet" href="/Content/Styles.css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="header">
+            <div class="title">SPORTS STORE</div>
+        </div>
+        <div id="categories">
+            We will put something useful here later
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="bodyContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

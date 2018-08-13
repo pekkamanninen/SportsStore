@@ -1,16 +1,10 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Listing.aspx.vb" Inherits="SportsStore.Listing" %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" 
+    MasterPageFile="/Pages/Store.Master"
+    CodeBehind="Listing.aspx.vb" Inherits="SportsStore.Listing" %>
 <%@ Import Namespace="SportsStore" %>
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1">
-        <h1>Otsikko</h1>
-        <div>
-             <%For Each prod As Product In GetProducts()
+<asp:Content ID="Content1" ContentPlaceHolderID="bodyContent" runat="server">
+    <div id="content">
+            <%For Each prod As Product In GetProducts()
                     Response.Write("<div class='item'>")
                     Response.Write(String.Format("<h3>{0}</h3>", prod.Name))
                     Response.Write(prod.Description)
@@ -19,9 +13,7 @@
 
                 Next%>
         </div>
-    </form>
-    <hr />
-    <div>
+    <div class="pager">
         <% For i As Integer = 1 To MaxPage
                 Response.Write(
                     String.Format(
@@ -29,5 +21,4 @@
                         i, If(i = CurrentPage, "class='selected'", ""), i))
             Next%>
     </div>
-</body>
-</html>
+</asp:Content>
