@@ -8,6 +8,7 @@
 </head>
 <body>
     <form id="form1">
+        <h1>Otsikko</h1>
         <div>
              <%For Each prod As Product In GetProducts()
                     Response.Write("<div class='item'>")
@@ -19,5 +20,14 @@
                 Next%>
         </div>
     </form>
+    <hr />
+    <div>
+        <% For i As Integer = 1 To MaxPage
+                Response.Write(
+                    String.Format(
+                        "<a href='/Pages/Listing.aspx?page={0}' {1}>{2}</a>",
+                        i, If(i = CurrentPage, "class='selected'", ""), i))
+            Next%>
+    </div>
 </body>
 </html>
