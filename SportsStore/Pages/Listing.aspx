@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" 
     MasterPageFile="/Pages/Store.Master"
     CodeBehind="Listing.aspx.vb" Inherits="SportsStore.Listing" %>
+<%@ Import Namespace="System.Web.Routing" %>
 <%@ Import Namespace="SportsStore" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContent" runat="server">
     <div id="content">
@@ -13,12 +14,24 @@
 
                 Next%>
         </div>
-    <div class="pager">
-        <% For i As Integer = 1 To MaxPage
+ <div class="pager">
+        <% Response.Write("<br />" & "Hardcoded Pagination Links: ")
+            For i As Integer = 1 To MaxPage
                 Response.Write(
                     String.Format(
                         "<a href='/Pages/Listing.aspx?page={0}' {1}>{2}</a>",
                         i, If(i = CurrentPage, "class='selected'", ""), i))
+            Next%>        
+        <% Response.Write("<br />" & "Generated Pagination Links: ")
+            For i As Integer = 1 To MaxPage
+                Dim path As String =
+                    RouteTable.Routes.GetVirtualPath(
+                        Nothing, Nothing,
+                        New RouteValueDictionary() _
+                        From {{"page", i}}).VirtualPath
+                Response.Write(String.Format(
+                    "<a href='{0}' {1}>{2}</a>",
+                    path, If(i = CurrentPage, "class='selected'", ""), i))
             Next%>
     </div>
 </asp:Content>

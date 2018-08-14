@@ -5,30 +5,41 @@
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
     End Sub
-    'Protected Function GetProducts1() As IEnumerable(Of Product)
-    '    Return repo.Products
-    'End Function
     Protected Function GetProducts() As IEnumerable(Of Product)
-        Return repo.Products.OrderBy(
+        Return FilterProducts().OrderBy(
             Function(p) p.ProductID
                 ).Skip((CurrentPage - 1) * pageSize).Take(pageSize)
     End Function
     Protected ReadOnly Property CurrentPage() As Integer
         Get
-            Dim page As Integer
-            page =
-                If(Integer.TryParse(
-                   Request.QueryString("page"), page
-                   ), page, 1)
+            Dim page As Integer = GetPageFromRequest()
             Return If(page > MaxPage, MaxPage, page)
         End Get
     End Property
     Protected ReadOnly Property MaxPage() As Integer
         Get
+            Dim prodCount As Integer = FilterProducts().Count()
             Return CInt(
-                Math.Ceiling(
-                    CDec(repo.Products.Count()
-                        ) / pageSize))
+                Math.Truncate(
+                    Math.Ceiling(
+                        CDec(prodCount) / pageSize)))
         End Get
     End Property
+    Private Function FilterProducts() As IEnumerable(Of Product)
+        Dim products As IEnumerable(Of Product) = repo.Products
+        Dim currentCategory As String =
+            If(DirectCast(RouteData.Values("category"), String),
+               Request.QueryString("category"))
+        Return If(currentCategory Is Nothing, products,
+                  products.Where(Function(p) p.Category = currentCategory))
+    End Function
+
+    Private Function GetPageFromRequest() As Integer
+        Dim page As Integer
+        Dim reqValue As String = RouteData.Values("page")
+        If RouteData.Values("page") Is Nothing Then _
+            reqValue = Request.QueryString("page")
+        Return If(reqValue IsNot Nothing AndAlso
+                  Integer.TryParse(reqValue, page), page, 1)
+    End Function
 End Class
