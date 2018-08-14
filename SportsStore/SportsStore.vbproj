@@ -102,6 +102,7 @@
     <Content Include="Content\Styles.css" />
     <Content Include="Controls\CategoryList.ascx" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\CartView.aspx" />
     <Content Include="Pages\Listing.aspx" />
     <Content Include="ReadMe.txt" />
     <Content Include="Web.config" />
@@ -118,6 +119,7 @@
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cart.vb" />
     <Compile Include="Models\Product.vb" />
     <Compile Include="Models\Repository\EFDbContext.vb" />
     <Compile Include="Models\Repository\Repository.vb" />
@@ -140,6 +142,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Pages\CartView.aspx.designer.vb">
+      <DependentUpon>CartView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CartView.aspx.vb">
+      <DependentUpon>CartView.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Helpers\SessionHelper.vb" />
     <Compile Include="Pages\Listing.aspx.designer.vb">
       <DependentUpon>Listing.aspx</DependentUpon>
     </Compile>
@@ -184,7 +194,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Pages\Helpers\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <PropertyGroup>

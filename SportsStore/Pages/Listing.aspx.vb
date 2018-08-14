@@ -1,11 +1,33 @@
-﻿Public Class Listing
+﻿Imports SportsStore.Repository
+Imports System.Web.Routing
+Public Class Listing
     Inherits System.Web.UI.Page
     Private repo As New Repository()
     Private pageSize As Integer = 4
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If IsPostBack Then
+            Dim selectedProductId As Integer
+            If Integer.TryParse(Request.Form("add"), selectedProductId) Then
+                Dim selectedProduct As Product =
+                    repo.Products.Where(
+                        Function(p) p.ProductID =
+                            selectedProductId).FirstOrDefault()
+                If selectedProduct IsNot Nothing Then
+                    SessionHelper.GetCart(
+                        Session).AddItem(selectedProduct, 1)
+                    SessionHelper.[Set](
+                        Session, SessionKey.RETURN_URL, Request.RawUrl)
 
+                    Response.Redirect(
+                        RouteTable.Routes.GetVirtualPath(
+                            Nothing,
+                            "cart",
+                            Nothing).VirtualPath)
+                End If
+            End If
+        End If
     End Sub
-    Protected Function GetProducts() As IEnumerable(Of Product)
+    Public Function GetProducts() As IEnumerable(Of Product)
         Return FilterProducts().OrderBy(
             Function(p) p.ProductID
                 ).Skip((CurrentPage - 1) * pageSize).Take(pageSize)

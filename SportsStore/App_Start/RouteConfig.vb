@@ -18,5 +18,9 @@ Public Class RouteConfig
             Nothing,
             "list",
             "~/Pages/Listing.aspx")
+        routes.MapPageRoute(
+            "cart",
+            "cart",
+            "~/Pages/CartView.aspx")
     End Sub
 End Class

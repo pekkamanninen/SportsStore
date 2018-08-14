@@ -4,16 +4,38 @@
 <%@ Import Namespace="System.Web.Routing" %>
 <%@ Import Namespace="SportsStore" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContent" runat="server">
+
     <div id="content">
-            <%For Each prod As Product In GetProducts()
+<%--            <%For Each prod As Product In GetProducts()
                     Response.Write("<div class='item'>")
                     Response.Write(String.Format("<h3>{0}</h3>", prod.Name))
                     Response.Write(prod.Description)
                     Response.Write(String.Format("<h4>{0:c}</h4>", prod.Price))
+
+                    Response.Write(String.Format("<button name='add' type='submit'" & "value ='{0}'>Add to Cart</button>", prod.ProductID))
+
                     Response.Write("</div>")
 
-                Next%>
+                Next%>--%>
+        <asp:Repeater ID="Repeater1" ItemType="SportsStore.Product" 
+            SelectMethod="GetProducts" 
+            runat="server">
+			
+            <ItemTemplate>
+                <div class="item">
+                    <h3><%# Item.Name %></h3>
+                    <%# Item.Description %>
+                    <h4><%# Item.Price.ToString("c") %></h4>
+                    <button name="add" type="submit"
+                        value="<%# Item.ProductID %>">Add to Cart</button>
+                </div>
+            </ItemTemplate>
+			
+        </asp:Repeater>
+
         </div>
+
+
  <div class="pager">
         <% Response.Write("<br />" & "Hardcoded Pagination Links: ")
             For i As Integer = 1 To MaxPage
