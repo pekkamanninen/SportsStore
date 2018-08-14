@@ -22,5 +22,9 @@ Public Class RouteConfig
             "cart",
             "cart",
             "~/Pages/CartView.aspx")
+        routes.MapPageRoute(
+            "checkout",
+            "checkout",
+            "~/Pages/Checkout.aspx")
     End Sub
 End Class

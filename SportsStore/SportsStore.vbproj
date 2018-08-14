@@ -100,15 +100,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Styles.css" />
+    <Content Include="Controls\CartSummary.ascx" />
     <Content Include="Controls\CategoryList.ascx" />
     <Content Include="Global.asax" />
     <Content Include="Pages\CartView.aspx" />
+    <Content Include="Pages\Checkout.aspx" />
     <Content Include="Pages\Listing.aspx" />
     <Content Include="ReadMe.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.vb" />
+    <Compile Include="Controls\CartSummary.ascx.designer.vb">
+      <DependentUpon>CartSummary.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CartSummary.ascx.vb">
+      <DependentUpon>CartSummary.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Controls\CategoryList.ascx.designer.vb">
       <DependentUpon>CategoryList.ascx</DependentUpon>
     </Compile>
@@ -120,6 +129,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cart.vb" />
+    <Compile Include="Models\Order.vb" />
     <Compile Include="Models\Product.vb" />
     <Compile Include="Models\Repository\EFDbContext.vb" />
     <Compile Include="Models\Repository\Repository.vb" />
@@ -147,6 +157,13 @@
     </Compile>
     <Compile Include="Pages\CartView.aspx.vb">
       <DependentUpon>CartView.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Checkout.aspx.designer.vb">
+      <DependentUpon>Checkout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Checkout.aspx.vb">
+      <DependentUpon>Checkout.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Pages\Helpers\SessionHelper.vb" />

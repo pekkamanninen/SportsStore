@@ -13,7 +13,7 @@
             </tr></thead>
             <tbody>
                 <asp:Repeater ItemType="SportsStore.CartLine" 
-                    SelectMethod="GetCartLines" runat="server">
+                    SelectMethod="GetCartLines" runat="server" EnableViewState="false">
                     <ItemTemplate>
                         <tr>
                             <td><%# Item.Quantity %></td>
@@ -21,6 +21,11 @@
                             <td><%# Item.Product.Price.ToString("c")%></td>
                             <td><%# ((Item.Quantity * 
                                 Item.Product.Price).ToString("c"))%></td>
+                            <td><button type="submit" 
+                                class="actionButtons" name="remove" 
+                                value="<%#Item.Product.ProductID %>">
+                                Remove</button>
+                            </td>
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>
@@ -32,6 +37,7 @@
         </table>
         <p class="actionButtons">
             <a href="<%= ReturnUrl %>">Continue shopping</a>
+            <a href="<%= CheckoutUrl %>">Checkout</a>
         </p>
     </div>
 </asp:Content>

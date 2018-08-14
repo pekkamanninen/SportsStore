@@ -11,50 +11,32 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class Store
+Partial Public Class CartSummary
     
     '''<summary>
-    '''Head1 control.
+    '''csQuantity control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Head1 As Global.System.Web.UI.HtmlControls.HtmlHead
+    Protected WithEvents csQuantity As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''form1 control.
+    '''csTotal control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
+    Protected WithEvents csTotal As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''CartSummary1 control.
+    '''csLink control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents CartSummary1 As Global.SportsStore.CartSummary
-    
-    '''<summary>
-    '''CatLinks1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents CatLinks1 As Global.SportsStore.CategoryList
-    
-    '''<summary>
-    '''bodyContent control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents bodyContent As Global.System.Web.UI.WebControls.ContentPlaceHolder
+    Protected WithEvents csLink As Global.System.Web.UI.HtmlControls.HtmlAnchor
 End Class
